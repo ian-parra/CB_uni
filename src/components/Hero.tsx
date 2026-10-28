@@ -11,11 +11,11 @@ export function Hero() {
       <div aria-hidden="true" className="bg-grid pointer-events-none absolute inset-0 -z-20" />
       <div
         aria-hidden="true"
-        className="animate-aurora pointer-events-none absolute -top-40 left-1/4 -z-10 size-[46rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.18),transparent_65%)] blur-3xl"
+        className="animate-aurora pointer-events-none absolute -top-40 left-1/4 -z-10 size-[32rem] sm:size-[46rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.18),transparent_65%)] blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="animate-aurora pointer-events-none absolute -top-24 right-0 -z-10 size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.14),transparent_65%)] blur-3xl [animation-delay:-9s]"
+        className="animate-aurora pointer-events-none absolute -top-24 right-0 -z-10 size-[28rem] sm:size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.14),transparent_65%)] blur-3xl [animation-delay:-9s]"
       />
 
       <div className="mx-auto max-w-5xl px-6">
@@ -30,7 +30,7 @@ export function Hero() {
         </motion.p>
 
         {/* Título y acceso directo desde el celular */}
-        <h1 className="mt-10 text-[3.1rem] font-semibold leading-[0.95] text-white sm:text-[4.2rem] lg:text-[4.7rem]">
+        <h1 className="mt-10 text-[2.2rem] sm:text-[3.1rem] lg:text-[4.2rem] font-semibold leading-[0.95] text-white">
           {lines.map((line, index) => (
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span

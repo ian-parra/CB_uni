@@ -52,7 +52,7 @@ export function Stats() {
                 {stat.label}
                 <span className="mt-1 block text-xs text-white/60">{stat.source}</span>
               </dt>
-              <dd className="font-display text-4xl font-semibold text-white sm:text-5xl">
+              <dd className="font-display text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </dd>
             </Reveal>
