@@ -1,0 +1,127 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #07080a;
+  --color-surface: #0c0e12;
+  --color-surface-2: #11141a;
+  --color-line: #1d222b;
+  --color-muted: #8b93a1;
+  --color-accent: #d7ff3e;
+  --color-accent-soft: #b6e02c;
+
+  --animate-aurora: aurora 22s ease-in-out infinite alternate;
+  --animate-marquee: marquee 34s linear infinite;
+
+  @keyframes aurora {
+    0% {
+      transform: translate3d(-6%, -4%, 0) scale(1);
+    }
+    50% {
+      transform: translate3d(6%, 5%, 0) scale(1.15);
+    }
+    100% {
+      transform: translate3d(-3%, 8%, 0) scale(1.05);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: #eef1f6;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* Anclas del menú: que la barra fija no tape los títulos. */
+  [id] {
+    scroll-margin-top: 6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility text-balance-safe {
+  text-wrap: balance;
+}
+
+/* Fondo con cuadrícula sutil (se desvanece hacia los bordes). */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+/* Tarjeta de vidrio reutilizable. */
+@utility glass {
+  background: linear-gradient(
+    160deg,
+    rgb(255 255 255 / 0.055),
+    rgb(255 255 255 / 0.015)
+  );
+  border: 1px solid rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(12px);
+}
+
+@utility mono-label {
+  font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
