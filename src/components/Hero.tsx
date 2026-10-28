@@ -1,25 +1,36 @@
 import { ArrowDown, Phone, Play } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { motion, useReducedMotion } from 'motion/react'
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { useRef } from 'react'
 import { site } from '../content'
 
 export function Hero() {
   const reduce = useReducedMotion()
   const lines = [...site.headline.lines, site.headline.accent]
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
+
+  // Parallax: las burbujas se mueven a distintas velocidades
+  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '30%'])
+  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '-20%'])
+  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', reduce ? '0%' : '15%'])
 
   return (
-    <section id="inicio" className="relative overflow-hidden pt-32 pb-20 sm:pt-48 sm:pb-32">
-      {/* Fondo decorativo animado */}
-      <div
+    <section ref={ref} id="inicio" className="relative overflow-hidden pt-32 pb-20 sm:pt-48 sm:pb-32">
+      {/* Fondo decorativo con parallax */}
+      <motion.div
         aria-hidden="true"
+        style={{ y: y1 }}
         className="animate-aurora pointer-events-none absolute -top-60 left-[-10%] -z-10 size-[60rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.25),transparent_70%)] blur-[120px]"
       />
-      <div
+      <motion.div
         aria-hidden="true"
+        style={{ y: y2 }}
         className="animate-aurora pointer-events-none absolute -bottom-40 right-[-10%] -z-10 size-[50rem] rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.2),transparent_70%)] blur-[100px] [animation-delay:-8s]"
       />
-      <div
+      <motion.div
         aria-hidden="true"
+        style={{ y: y3 }}
         className="animate-aurora pointer-events-none absolute top-[30%] left-[20%] -z-10 size-[40rem] rounded-full bg-[radial-gradient(circle,rgba(94,234,212,0.15),transparent_70%)] blur-[90px] [animation-delay:-4s]"
       />
 
@@ -54,27 +65,27 @@ export function Hero() {
         </h1>
 
         <motion.p
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          initial={reduce ? false : { opacity: 0, filter: 'blur(8px)', y: 10 }}
+          animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+          transition={{ type: 'spring', stiffness: 90, damping: 18, delay: 0.4 }}
           className="mt-6 font-display text-lg font-medium text-violet-soft sm:text-xl"
         >
           {site.subtitle}
         </motion.p>
 
         <motion.p
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          initial={reduce ? false : { opacity: 0, filter: 'blur(8px)', y: 10 }}
+          animate={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
+          transition={{ type: 'spring', stiffness: 90, damping: 18, delay: 0.5 }}
           className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
         >
           {site.description}
         </motion.p>
 
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          initial={reduce ? false : { opacity: 0, y: 14, filter: 'blur(6px)' }}
+          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+          transition={{ type: 'spring', stiffness: 100, damping: 18, delay: 0.6 }}
           className="mt-10 flex flex-wrap items-center gap-3"
         >
           <a
