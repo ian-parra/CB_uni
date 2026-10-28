@@ -1,4 +1,5 @@
 import { ArrowDown, Phone, Play } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'motion/react'
 import { site } from '../content'
 
@@ -80,13 +81,11 @@ export function Hero() {
             <Play aria-hidden="true" className="size-4" />
             Jugar la experiencia
           </a>
-          <a
-            href="#propuesta"
+          <Link to="/propuesta"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-violet/60 hover:text-violet"
           >
             Ver la propuesta
-            <ArrowDown aria-hidden="true" className="size-4" />
-          </a>
+            <ArrowDown aria-hidden="true" className="size-4" /></Link>
         </motion.div>
 
         <motion.p

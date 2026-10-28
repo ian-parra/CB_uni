@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Check, Lock, RotateCcw, Sparkles, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
@@ -145,12 +146,12 @@ export function Game() {
               <p className="text-xs leading-relaxed text-white/45">
                 ¿Sos docente y querés llevarlo al aula? La ficha completa, la secuencia y los
                 criterios están en{' '}
-                <a
-                  href="#propuesta"
+                <Link
+                  to="/propuesta"
                   className="text-violet underline underline-offset-4 hover:text-violet-soft"
                 >
                   la propuesta
-                </a>
+                </Link>
                 .
               </p>
             </Reveal>

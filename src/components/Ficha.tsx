@@ -106,19 +106,16 @@ export function Ficha() {
                   ))}
                 </ul>
               </div>
-              <div>
-                <p className="mono-label border-t border-white/8 pt-4 text-white/50">Evaluación</p>
-                <p className="mt-3 text-sm leading-relaxed text-white/75">{proposal.evaluacion}</p>
-
+              <div className="space-y-4">
                 {proposal.integrantes.length > 0 ? (
-                  <div className="mt-5">
+                  <div>
                     <p className="mono-label text-white/50">Integrantes</p>
                     <p className="mt-2 text-sm text-white/75">{proposal.integrantes.join(' · ')}</p>
                   </div>
                 ) : null}
 
                 {proposal.profesorado ? (
-                  <div className="mt-5">
+                  <div>
                     <p className="mono-label text-white/50">Profesorado</p>
                     <p className="mt-2 text-sm text-white/75">{proposal.profesorado}</p>
                   </div>
