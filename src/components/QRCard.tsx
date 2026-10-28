@@ -2,15 +2,20 @@ import { Download, Loader2 } from 'lucide-react'
 import { motion, useMotionValue, useReducedMotion, useSpring } from 'motion/react'
 import type { PointerEvent } from 'react'
 import { download, svgDataURL, type QRCodeData } from '../lib/qr'
+import { useQR } from '../hooks/useQR'
+import { getDefaultURL } from '../lib/qr'
 
 type QRCardProps = {
-  data: QRCodeData | null
-  url: string
-  error: boolean
+  data?: QRCodeData | null
+  url?: string
+  error?: boolean
 }
 
-/** Tarjeta con el QR real, inclinación 3D sutil y descarga en PNG / SVG. */
-export function QRCard({ data, url, error }: QRCardProps) {
+/** Tarjeta con el QR real, inclinación 3D sutil y descarga en PNG / SVG.
+ * Si no se le pasan props, genera el QR de la URL actual automáticamente. */
+export function QRCard({ data: dataProp, url: urlProp, error: errorProp }: QRCardProps) {
+  const url = urlProp ?? getDefaultURL()
+  const { data = dataProp ?? null, error = errorProp ?? false } = useQR(url)
   const reduce = useReducedMotion()
   const rotateX = useSpring(useMotionValue(0), { stiffness: 160, damping: 18 })
   const rotateY = useSpring(useMotionValue(0), { stiffness: 160, damping: 18 })

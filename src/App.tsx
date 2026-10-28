@@ -11,11 +11,11 @@ import { Myths } from './components/Myths'
 import { Nav } from './components/Nav'
 import { QRShare } from './components/QRShare'
 import { Recorrido } from './components/Recorrido'
+import { Preguntas } from './components/Preguntas'
 import { Resources } from './components/Resources'
 import { Scenarios } from './components/Scenarios'
 import { Signs } from './components/Signs'
 import { Stats } from './components/Stats'
-import { Team } from './components/Team'
 import { Types } from './components/Types'
 import { useQR } from './hooks/useQR'
 import { getDefaultURL, getPageURL } from './lib/qr'
@@ -65,7 +65,7 @@ export default function App() {
       <Nav />
 
       <main id="contenido">
-        <Hero data={data} url={url} error={error} />
+        <Hero />
         <Stats />
         <Ficha />
         <Recorrido />
@@ -75,6 +75,7 @@ export default function App() {
         <Definition />
         <Types />
         <Scenarios />
+        <Preguntas />
         <Signs />
         <Actions />
         <Resources />
@@ -87,7 +88,6 @@ export default function App() {
           onChangeURL={handleChangeURL}
           onResetURL={handleResetURL}
         />
-        <Team />
       </main>
 
       <Footer />

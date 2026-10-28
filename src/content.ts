@@ -810,6 +810,61 @@ export const quiz: QuizQuestion[] = [
   },
 ]
 
+export type QuestionCategory = {
+  title: string
+  questions: string[]
+}
+
+/** Preguntas para trabajar en el aula antes o después del juego. */
+export const questions: QuestionCategory[] = [
+  {
+    title: 'Para comprender el tema',
+    questions: [
+      '¿Qué es el ciberbullying?',
+      '¿Cuál es la diferencia entre bullying y ciberbullying?',
+      '¿En qué redes sociales o plataformas suele ocurrir?',
+      '¿Qué formas puede adoptar el ciberbullying?',
+      '¿Por qué algunas personas agreden a otras a través de internet?',
+      '¿Cómo podemos reconocer si alguien está sufriendo ciberbullying?',
+    ],
+  },
+  {
+    title: 'Para reflexionar y debatir',
+    questions: [
+      '¿Una broma por internet puede convertirse en ciberbullying? ¿Por qué?',
+      '¿Qué consecuencias puede tener el ciberbullying en la salud emocional de una persona?',
+      '¿Compartir una foto humillante de alguien sin su permiso también es una forma de violencia?',
+      '¿Las personas que observan una agresión y no intervienen tienen alguna responsabilidad?',
+      '¿Por qué algunas personas se animan a insultar por internet cosas que no dirían cara a cara?',
+      '¿Borrar una publicación significa que el daño ya está reparado?',
+      '¿Los comentarios negativos en redes sociales pueden afectar la autoestima?',
+    ],
+  },
+  {
+    title: 'Para pensar en posibles soluciones',
+    questions: [
+      '¿Qué deberíamos hacer si somos víctimas de ciberbullying?',
+      '¿Cómo podemos ayudar a un compañero que está sufriendo acoso virtual?',
+      '¿A quién podemos recurrir si el problema ocurre en un grupo escolar?',
+      '¿Qué medidas pueden tomar las escuelas para prevenirlo?',
+      '¿Por qué es importante guardar pruebas y denunciar las agresiones?',
+      '¿Cómo podemos usar las redes sociales de manera responsable?',
+      '¿Qué podemos hacer para evitar convertirnos en cómplices de una agresión?',
+    ],
+  },
+  {
+    title: 'Preguntas con situaciones concretas',
+    questions: [
+      'Si en un grupo de WhatsApp todos se burlan de un compañero, ¿qué harías?',
+      'Si alguien publica una foto tuya sin permiso para ridiculizarte, ¿cómo reaccionarías?',
+      'Si recibís un mensaje ofensivo, ¿responderías, bloquearías a la persona o pedirías ayuda? ¿Por qué?',
+      'Si tu mejor amigo participa en una agresión virtual, ¿lo enfrentarías?',
+      'Si ves que todos comparten un meme que humilla a un compañero, ¿lo compartirías para no quedar afuera del grupo?',
+      '¿Qué diferencia hay entre defender a alguien y empeorar el conflicto?',
+    ],
+  },
+]
+
 /** Completar con los nombres reales del equipo cuando estén definidos. */
 export const team: Member[] = []
 
