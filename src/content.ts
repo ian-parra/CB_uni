@@ -126,8 +126,8 @@ export const proposal = {
   ],
   evaluacion:
     'Observación del debate, registro de las palabras clave y el pacto producido por cada grupo.',
-  integrantes: [] as string[],
-  profesorado: '',
+  integrantes: ['Oses Sol', 'Paola Solozano', 'Noelia Navarro', 'Ailen Barraza'],
+  profesorado: 'Profesorado Universitario en Letras y Educación Física · Profesora: Bárbara Pánico · UNAHUR',
 }
 
 export type Stage = {
