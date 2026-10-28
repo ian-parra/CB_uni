@@ -8,39 +8,42 @@ export function Hero() {
   const lines = [...site.headline.lines, site.headline.accent]
 
   return (
-    <section id="inicio" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
-      <div aria-hidden="true" className="bg-grid pointer-events-none absolute inset-0 -z-20" />
+    <section id="inicio" className="relative overflow-hidden pt-32 pb-20 sm:pt-48 sm:pb-32">
+      {/* Fondo decorativo animado */}
       <div
         aria-hidden="true"
-        className="animate-aurora pointer-events-none absolute -top-40 left-1/4 -z-10 size-[32rem] sm:size-[46rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.18),transparent_65%)] blur-3xl"
+        className="animate-aurora pointer-events-none absolute -top-60 left-[-10%] -z-10 size-[60rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.25),transparent_70%)] blur-[120px]"
       />
       <div
         aria-hidden="true"
-        className="animate-aurora pointer-events-none absolute -top-24 right-0 -z-10 size-[28rem] sm:size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.14),transparent_65%)] blur-3xl [animation-delay:-9s]"
+        className="animate-aurora pointer-events-none absolute -bottom-40 right-[-10%] -z-10 size-[50rem] rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.2),transparent_70%)] blur-[100px] [animation-delay:-8s]"
+      />
+      <div
+        aria-hidden="true"
+        className="animate-aurora pointer-events-none absolute top-[30%] left-[20%] -z-10 size-[40rem] rounded-full bg-[radial-gradient(circle,rgba(94,234,212,0.15),transparent_70%)] blur-[90px] [animation-delay:-4s]"
       />
 
       <div className="mx-auto max-w-5xl px-6">
         <motion.p
           initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs text-white/75"
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-white/75 backdrop-blur-sm"
         >
-          <span className="size-1.5 rounded-full bg-coral" aria-hidden="true" />
+          <span className="size-1.5 rounded-full bg-coral animate-pulse" aria-hidden="true" />
           {site.badge}
         </motion.p>
 
-        {/* Título y acceso directo desde el celular */}
-        <h1 className="mt-10 text-[2.2rem] sm:text-[3.1rem] lg:text-[4.2rem] font-semibold leading-[0.95] text-white">
+        <h1 className="mt-8 text-[2.6rem] sm:text-[4rem] lg:text-[5rem] font-black leading-[0.95] text-white tracking-tight">
           {lines.map((line, index) => (
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
-                className={`block ${index === lines.length - 1 ? 'text-violet' : ''}`}
-                initial={reduce ? false : { y: '110%' }}
-                animate={{ y: 0 }}
+                className={`block ${index === lines.length - 1 ? 'text-coral' : ''}`}
+                initial={reduce ? false : { y: '110%', opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{
-                  duration: 0.85,
-                  delay: 0.2 + index * 0.08,
+                  duration: 0.8,
+                  delay: 0.15 + index * 0.09,
                   ease: [0.16, 1, 0.3, 1],
                 }}
               >
@@ -53,8 +56,8 @@ export function Hero() {
         <motion.p
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
-          className="mt-5 font-display text-lg font-medium text-violet-soft sm:text-xl"
+          transition={{ duration: 0.7, delay: 0.4 }}
+          className="mt-6 font-display text-lg font-medium text-violet-soft sm:text-xl"
         >
           {site.subtitle}
         </motion.p>
@@ -62,7 +65,7 @@ export function Hero() {
         <motion.p
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
         >
           {site.description}
@@ -71,28 +74,30 @@ export function Hero() {
         <motion.div
           initial={reduce ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
-          className="mt-9 flex flex-wrap items-center gap-3"
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-10 flex flex-wrap items-center gap-3"
         >
           <a
             href="#juego"
-            className="inline-flex items-center gap-2 rounded-full bg-violet px-6 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-violet-soft"
+            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-violet to-coral px-7 py-3 text-sm font-bold text-ink shadow-[0_0_20px_rgba(167,139,250,0.4)] transition-all duration-300 hover:shadow-[0_0_30px_rgba(167,139,250,0.6)] hover:scale-105 active:scale-95"
           >
             <Play aria-hidden="true" className="size-4" />
             Jugar la experiencia
           </a>
-          <Link to="/propuesta"
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-violet/60 hover:text-violet"
+          <Link
+            to="/propuesta"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-violet/60 hover:bg-white/10 hover:text-violet hover:scale-105"
           >
             Ver la propuesta
-            <ArrowDown aria-hidden="true" className="size-4" /></Link>
+            <ArrowDown aria-hidden="true" className="size-4" />
+          </Link>
         </motion.div>
 
         <motion.p
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.62 }}
-          className="mt-5 inline-flex items-center gap-2 text-xs text-coral-soft"
+          transition={{ duration: 0.7, delay: 0.65 }}
+          className="mt-6 inline-flex items-center gap-2 text-xs text-coral-soft"
         >
           <Phone aria-hidden="true" className="size-3.5" />
           Si estás atravesando una situación de acoso, llamá al 137 (24 h) o al 102.
@@ -102,7 +107,7 @@ export function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.7 }}
-          className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/8 pt-6 text-sm"
+          className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/8 pt-8 text-sm"
         >
           <div>
             <dt className="mono-label text-white/50">Institución</dt>

@@ -1,4 +1,4 @@
-import { ArrowUpRight, GitBranch } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { site, sources } from '../content'
 
 export function Footer() {
@@ -61,15 +61,6 @@ export function Footer() {
           <p className="text-xs text-white/55">
             Proyecto de extensión · Contenido educativo de acceso libre
           </p>
-          <a
-            href="https://github.com/ian-parra/CB_uni"
-            target="_blank"
-            rel="noreferrer noopener"
-            className="flex items-center gap-2 text-xs text-white/55 transition-colors duration-200 hover:text-violet"
-          >
-            <GitBranch aria-hidden="true" className="size-4" />
-            Código en GitHub
-          </a>
         </div>
       </div>
     </footer>
