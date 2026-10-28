@@ -47,18 +47,24 @@ a partir de la URL que aparece en el panel de la sección “Acceso con QR”.
 
 ## 4. Publicar gratis (sin tarjeta, para siempre)
 
-### Opción A — Cloudflare Pages (recomendada)
+### Opción A — Cloudflare Workers (es la configurada en este repo)
 
-Ancho de banda ilimitado en sitios estáticos, sin tarjeta y sin pausas mensuales.
+El repo incluye `wrangler.jsonc`: publica `dist/` como assets estáticos y no necesita
+base de datos ni bindings.
 
-1. Crea una cuenta en <https://dash.cloudflare.com> → **Workers & Pages** → *Create* → *Pages*.
-2. **La forma más rápida:** pestaña *Upload assets*, arrastra la carpeta `dist/`
-   (después de `npm run build`). Te da una URL tipo `https://tu-proyecto.pages.dev`.
-3. **La forma automática:** conecta el repositorio de GitHub, y configura:
-   - Build command: `npm run build`
-   - Output directory: `dist`
-   - Framework preset: *Vite*
-   Cada `git push` a `main` vuelve a publicar.
+1. Workers & Pages → **Create** → **Connect to Git** → repo `CB_uni`.
+2. Build command: `npm run build`.
+3. Deploy command: `npx wrangler deploy` (viene por defecto).
+4. Root directory `/`, Build variables vacías, Build token automático.
+5. **Save and Deploy** → `https://cb-uni.TU-SUBDOMINIO.workers.dev`.
+
+Cada `git push` a `main` vuelve a publicar automáticamente.
+
+### Opción A-bis — Cloudflare Pages (equivalente)
+
+Mismo resultado con `https://cb-uni.pages.dev` y ancho de banda ilimitado en estáticos:
+pestaña **Pages** → *Connect to Git* → *Framework preset* `Vite`, *Build command*
+`npm run build`, *Output directory* `dist`. No usa `wrangler.jsonc`.
 
 ### Opción B — GitHub Pages (si el código ya está en GitHub)
 
