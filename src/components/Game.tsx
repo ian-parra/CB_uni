@@ -93,14 +93,14 @@ export function Game() {
   }
 
   return (
-    <section id="juego" className="relative border-t border-white/8 py-24 sm:py-32">
+    <section id="juego" className="relative border-t border-white/8 py-16 sm:py-32">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-80 bg-[radial-gradient(ellipse_at_top,rgba(167,139,250,0.12),transparent_70%)]"
       />
 
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
           <div>
             <SectionTitle
               kicker="La experiencia"
@@ -114,7 +114,7 @@ export function Game() {
               description="En la feria, cada estación se abre con su propio QR. Acá podés recorrerlas en orden: al resolver cada desafío se desbloquea una palabra y, al final, el código que abre el sobre."
             />
 
-            <Reveal delay={0.1} className="mt-8">
+            <Reveal delay={0.1} className="mt-6 sm:mt-8">
               <div className="rounded-2xl border border-white/8 bg-surface p-5">
                 <p className="mono-label text-white/50">Palabras desbloqueadas</p>
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -160,7 +160,7 @@ export function Game() {
           <Reveal delay={0.1}>
             <div
               id={`estacion-${station.n}`}
-              className="rounded-2xl border border-white/10 bg-surface p-6 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] sm:p-8"
+              className="rounded-2xl border border-white/10 bg-surface p-4 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] sm:p-8"
             >
               {!finished ? (
                 <>
@@ -188,7 +188,7 @@ export function Game() {
                     />
                   </div>
 
-                  <h3 className="mt-6 font-display text-2xl font-semibold text-white">
+                  <h3 className="mt-5 font-display text-xl font-semibold text-white sm:mt-6 sm:text-2xl">
                     {station.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted">{station.mission}</p>
@@ -208,7 +208,7 @@ export function Game() {
                           type="button"
                           onClick={() => pick(index)}
                           disabled={answered || isWrong}
-                          className={`flex w-full items-start gap-3 rounded-xl border px-4 py-3 text-left text-sm transition-colors duration-200 ${
+                          className={`flex w-full items-start gap-3 rounded-xl border px-4 py-3.5 text-left text-sm transition-colors duration-200 sm:py-3 ${
                             showCorrect
                               ? 'border-mint/50 bg-mint/10 text-white'
                               : isWrong

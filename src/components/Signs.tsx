@@ -4,8 +4,8 @@ import { Reveal, SectionTitle } from './Reveal'
 
 export function Signs() {
   return (
-    <section id="senales" className="relative border-t border-white/8 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="senales" className="relative border-t border-white/8 py-16 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <SectionTitle

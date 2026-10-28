@@ -19,8 +19,8 @@ export function Actions() {
   }
 
   return (
-    <section id="que-hacer" className="relative border-t border-white/8 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="que-hacer" className="relative border-t border-white/8 py-16 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionTitle
           kicker="Qué hacer"
           title={

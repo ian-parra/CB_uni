@@ -109,6 +109,22 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* Mejoras para móvil */
+  @media (max-width: 640px) {
+    /* Inputs más grandes para evitar zoom en iOS */
+    input,
+    select,
+    textarea {
+      font-size: max(1rem, 16px);
+    }
+
+    /* Mejor touch target */
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
 }
 
 /* Fondo con cuadrícula sutil que se desvanece hacia los bordes. */

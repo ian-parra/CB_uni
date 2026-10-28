@@ -4,7 +4,7 @@ import { site, sources } from '../content'
 export function Footer() {
   return (
     <footer className="border-t border-white/8">
-      <div className="mx-auto max-w-6xl px-6 py-14">
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
         <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
           <div>
             <h2 className="mono-label text-violet">Aviso importante</h2>

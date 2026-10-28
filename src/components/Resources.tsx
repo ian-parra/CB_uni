@@ -4,13 +4,13 @@ import { Reveal, SectionTitle } from './Reveal'
 
 export function Resources() {
   return (
-    <section id="ayuda" className="relative border-t border-white/8 py-24 sm:py-32">
+    <section id="ayuda" className="relative border-t border-white/8 py-16 sm:py-32">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(ellipse_at_top,rgba(251,113,133,0.12),transparent_70%)]"
       />
 
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionTitle
           kicker="Pedir ayuda"
           title={

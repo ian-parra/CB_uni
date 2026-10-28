@@ -11,12 +11,12 @@ function linkClass(active: boolean) {
 
 const Logo = () => (
   <svg
-    width="32"
-    height="32"
+    width="28"
+    height="28"
     viewBox="0 0 32 32"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="drop-shadow-[0_0_8px_rgba(167,139,250,0.6)]"
+    className="shrink-0 drop-shadow-[0_0_8px_rgba(167,139,250,0.6)]"
   >
     <circle cx="16" cy="16" r="14" stroke="url(#grad)" strokeWidth="3" />
     <defs>
@@ -53,9 +53,15 @@ export function Nav() {
     window.scrollTo(0, 0)
   }, [location.pathname])
 
+  // Cierra el menú al cambiar de ruta
+  useEffect(() => {
+    setOpen(false)
+  }, [location])
+
   const goHome = () => {
     navigate('/')
     window.scrollTo(0, 0)
+    setOpen(false)
   }
 
   const propuestaActive = location.pathname.startsWith('/propuesta')
@@ -63,20 +69,23 @@ export function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? 'border-b border-white/8 bg-ink/90 backdrop-blur-xl' : 'border-b border-transparent'
+        scrolled || open
+          ? 'border-b border-white/8 bg-ink/90 backdrop-blur-xl'
+          : 'border-b border-transparent'
       }`}
     >
-      <nav aria-label="Principal" className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <nav aria-label="Principal" className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:h-16 sm:px-6">
         <button
           onClick={goHome}
-          className="flex items-center gap-2.5 bg-transparent hover:bg-transparent active:opacity-80"
+          className="flex items-center gap-2.5 rounded-lg bg-transparent px-1 py-1 hover:bg-transparent active:opacity-80"
         >
           <Logo />
-          <span className="font-display text-[0.95rem] font-semibold tracking-tight text-white">
+          <span className="font-display text-[0.9rem] font-semibold tracking-tight text-white sm:text-[0.95rem]">
             {site.name}
           </span>
         </button>
 
+        {/* Desktop */}
         <div className="hidden items-center gap-1 lg:flex">
           <Link to="/propuesta" className={linkClass(propuestaActive)}>
             Propuesta
@@ -90,6 +99,7 @@ export function Nav() {
           </a>
         </div>
 
+        {/* Botón hamburguesa */}
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
@@ -106,11 +116,23 @@ export function Nav() {
         </button>
       </nav>
 
+      {/* Menú móvil full-screen */}
       {open ? (
-        <div id="menu-movil" className="border-t border-white/8 bg-ink/95 px-6 py-4 lg:hidden">
-          <ul className="flex flex-col gap-1">
+        <div
+          id="menu-movil"
+          className="fixed inset-x-0 top-14 border-t border-white/8 bg-ink/95 backdrop-blur-xl lg:hidden sm:top-16"
+        >
+          <ul className="flex flex-col gap-1 px-4 py-4 sm:px-6">
             <li>
-              <Link to="/propuesta" onClick={() => setOpen(false)} className={linkClass(propuestaActive)}>
+              <Link
+                to="/propuesta"
+                onClick={() => setOpen(false)}
+                className={`block rounded-xl px-4 py-3.5 text-base font-medium transition-colors duration-200 ${
+                  propuestaActive
+                    ? 'bg-violet text-ink'
+                    : 'text-white/80 hover:bg-white/5 hover:text-white'
+                }`}
+              >
                 Propuesta
               </Link>
             </li>
@@ -118,9 +140,10 @@ export function Nav() {
               <a
                 href="#juego"
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm text-white/75 transition-colors duration-200 hover:bg-white/5 hover:text-white"
+                className="flex items-center gap-2 rounded-xl bg-violet/15 px-4 py-3.5 text-base font-medium text-violet transition-colors duration-200 hover:bg-violet/25"
               >
-                Jugar
+                <Play aria-hidden="true" className="size-4" />
+                Jugar la experiencia
               </a>
             </li>
           </ul>

@@ -23,8 +23,8 @@ const icons: Record<string, LucideIcon> = {
 
 export function Types() {
   return (
-    <section id="tipos" className="relative border-t border-white/8 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="tipos" className="relative border-t border-white/8 py-16 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionTitle
           kicker="Cómo se manifiesta"
           title={

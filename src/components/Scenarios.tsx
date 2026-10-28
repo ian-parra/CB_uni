@@ -3,8 +3,8 @@ import { Reveal, SectionTitle } from './Reveal'
 
 export function Scenarios() {
   return (
-    <section aria-labelledby="situaciones" className="border-t border-white/8 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section aria-labelledby="situaciones" className="border-t border-white/8 py-16 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionTitle
           kicker="Tres situaciones reales"
           title={
