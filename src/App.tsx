@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Actions } from './components/Actions'
 import { Definition } from './components/Definition'
 import { Ficha } from './components/Ficha'
@@ -9,16 +8,13 @@ import { Hero } from './components/Hero'
 import { Laws } from './components/Laws'
 import { Myths } from './components/Myths'
 import { Nav } from './components/Nav'
-import { QRShare } from './components/QRShare'
-import { Recorrido } from './components/Recorrido'
 import { Preguntas } from './components/Preguntas'
+import { Recorrido } from './components/Recorrido'
 import { Resources } from './components/Resources'
 import { Scenarios } from './components/Scenarios'
 import { Signs } from './components/Signs'
 import { Stats } from './components/Stats'
 import { Types } from './components/Types'
-import { useQR } from './hooks/useQR'
-import { getDefaultURL, getPageURL } from './lib/qr'
 
 /** Separador entre la propuesta y el material de consulta. */
 function GuideIntro() {
@@ -40,19 +36,6 @@ function GuideIntro() {
 }
 
 export default function App() {
-  const [url, setURL] = useState(getDefaultURL)
-  const { data, error } = useQR(url)
-
-  function handleChangeURL(next: string) {
-    setURL(next)
-    if (next) localStorage.setItem('qr-target-url', next)
-  }
-
-  function handleResetURL() {
-    localStorage.removeItem('qr-target-url')
-    setURL(getPageURL())
-  }
-
   return (
     <>
       <a
@@ -81,13 +64,6 @@ export default function App() {
         <Resources />
         <Laws />
         <Myths />
-        <QRShare
-          data={data}
-          url={url}
-          error={error}
-          onChangeURL={handleChangeURL}
-          onResetURL={handleResetURL}
-        />
       </main>
 
       <Footer />

@@ -8,7 +8,6 @@ const links = [
   { href: '#juego', label: 'Juego' },
   { href: '#que-es', label: 'Guía' },
   { href: '#ayuda', label: 'Ayuda' },
-  { href: '#qr', label: 'QR' },
 ]
 
 export function Nav() {

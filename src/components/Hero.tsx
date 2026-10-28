@@ -1,7 +1,6 @@
 import { ArrowDown, Phone, Play } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 import { site } from '../content'
-import { QRCard } from './QRCard'
 
 export function Hero() {
   const reduce = useReducedMotion()
@@ -30,16 +29,7 @@ export function Hero() {
           {site.badge}
         </motion.p>
 
-        {/* El QR al principio: acceso directo desde el celular */}
-        <motion.div
-          initial={reduce ? false : { opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mx-auto max-w-[18rem] rounded-2xl border border-white/12 p-3 bg-white/5 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.6)]"
-        >
-          <QRCard />
-        </motion.div>
-
+        {/* Título y acceso directo desde el celular */}
         <h1 className="mt-10 text-[3.1rem] font-semibold leading-[0.95] text-white sm:text-[4.2rem] lg:text-[4.7rem]">
           {lines.map((line, index) => (
             <span key={line} className="block overflow-hidden pb-[0.06em]">
