@@ -1,4 +1,4 @@
-import { ArrowUpRight, QrCode } from 'lucide-react'
+import { ArrowDown, Phone, Play } from 'lucide-react'
 import { motion, useReducedMotion } from 'motion/react'
 import { site } from '../content'
 import type { QRCodeData } from '../lib/qr'
@@ -15,35 +15,34 @@ export function Hero({ data, url, error }: HeroProps) {
   const lines = [...site.headline.lines, site.headline.accent]
 
   return (
-    <section id="inicio" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-      {/* Fondo: cuadrícula + halos de color */}
+    <section id="inicio" className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
       <div aria-hidden="true" className="bg-grid pointer-events-none absolute inset-0 -z-20" />
       <div
         aria-hidden="true"
-        className="animate-aurora pointer-events-none absolute -top-40 left-1/4 -z-10 size-[46rem] rounded-full bg-[radial-gradient(circle,rgba(215,255,62,0.16),transparent_65%)] blur-3xl"
+        className="animate-aurora pointer-events-none absolute -top-40 left-1/4 -z-10 size-[46rem] rounded-full bg-[radial-gradient(circle,rgba(167,139,250,0.18),transparent_65%)] blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="animate-aurora pointer-events-none absolute -top-20 right-0 -z-10 size-[38rem] rounded-full bg-[radial-gradient(circle,rgba(88,120,255,0.18),transparent_65%)] blur-3xl [animation-delay:-8s]"
+        className="animate-aurora pointer-events-none absolute -top-24 right-0 -z-10 size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(251,113,133,0.14),transparent_65%)] blur-3xl [animation-delay:-9s]"
       />
 
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
         <div>
           <motion.p
             initial={reduce ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs text-white/70"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs text-white/75"
           >
-            <span className="size-1.5 rounded-full bg-accent" aria-hidden="true" />
+            <span className="size-1.5 rounded-full bg-coral" aria-hidden="true" />
             {site.badge}
           </motion.p>
 
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.03] text-white sm:text-[3.5rem] lg:text-[4.15rem]">
+          <h1 className="mt-6 text-[3.1rem] font-semibold leading-[0.95] text-white sm:text-[4.2rem] lg:text-[4.7rem]">
             {lines.map((line, index) => (
-              <span key={line} className="block overflow-hidden pb-[0.08em]">
+              <span key={line} className="block overflow-hidden pb-[0.06em]">
                 <motion.span
-                  className={`block ${index === lines.length - 1 ? 'text-accent' : ''}`}
+                  className={`block ${index === lines.length - 1 ? 'text-violet' : ''}`}
                   initial={reduce ? false : { y: '110%' }}
                   animate={{ y: 0 }}
                   transition={{
@@ -61,8 +60,17 @@ export function Hero({ data, url, error }: HeroProps) {
           <motion.p
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.35 }}
+            className="mt-5 font-display text-lg font-medium text-violet-soft sm:text-xl"
+          >
+            {site.subtitle}
+          </motion.p>
+
+          <motion.p
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
+            className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
           >
             {site.description}
           </motion.p>
@@ -74,20 +82,30 @@ export function Hero({ data, url, error }: HeroProps) {
             className="mt-9 flex flex-wrap items-center gap-3"
           >
             <a
-              href="#qr"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-accent-soft"
+              href="#juego"
+              className="inline-flex items-center gap-2 rounded-full bg-violet px-6 py-3 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-violet-soft"
             >
-              <QrCode aria-hidden="true" className="size-4" />
-              Obtener el QR
+              <Play aria-hidden="true" className="size-4" />
+              Jugar la experiencia
             </a>
             <a
-              href="#proyecto"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-white/40 hover:bg-white/5"
+              href="#propuesta"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-white transition-colors duration-200 hover:border-violet/60 hover:text-violet"
             >
-              Ver el proyecto
-              <ArrowUpRight aria-hidden="true" className="size-4" />
+              Ver la propuesta
+              <ArrowDown aria-hidden="true" className="size-4" />
             </a>
           </motion.div>
+
+          <motion.p
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.62 }}
+            className="mt-5 inline-flex items-center gap-2 text-xs text-coral-soft"
+          >
+            <Phone aria-hidden="true" className="size-3.5" />
+            Si estás atravesando una situación de acoso, llamá al 137 (24 h) o al 102.
+          </motion.p>
 
           <motion.dl
             initial={reduce ? false : { opacity: 0 }}
@@ -96,15 +114,15 @@ export function Hero({ data, url, error }: HeroProps) {
             className="mt-12 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/8 pt-6 text-sm"
           >
             <div>
-              <dt className="mono-label text-white/55">Institución</dt>
+              <dt className="mono-label text-white/50">Institución</dt>
               <dd className="mt-1 text-white/80">{site.university}</dd>
             </div>
             <div>
-              <dt className="mono-label text-white/55">Materia</dt>
-              <dd className="mt-1 text-white/80">{site.course}</dd>
+              <dt className="mono-label text-white/50">Espacio</dt>
+              <dd className="mt-1 text-white/80">{site.space}</dd>
             </div>
             <div>
-              <dt className="mono-label text-white/55">Año</dt>
+              <dt className="mono-label text-white/50">Año</dt>
               <dd className="mt-1 text-white/80">{site.year}</dd>
             </div>
           </motion.dl>

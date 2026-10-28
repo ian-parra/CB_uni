@@ -1,46 +1,41 @@
 import { useState } from 'react'
-import { Features } from './components/Features'
+import { Actions } from './components/Actions'
+import { Definition } from './components/Definition'
+import { Ficha } from './components/Ficha'
 import { Footer } from './components/Footer'
+import { Fundamentacion } from './components/Fundamentacion'
+import { Game } from './components/Game'
 import { Hero } from './components/Hero'
+import { Laws } from './components/Laws'
+import { Myths } from './components/Myths'
 import { Nav } from './components/Nav'
-import { QRGuide } from './components/QRGuide'
+import { QRShare } from './components/QRShare'
+import { Recorrido } from './components/Recorrido'
+import { Resources } from './components/Resources'
+import { Scenarios } from './components/Scenarios'
+import { Signs } from './components/Signs'
+import { Stats } from './components/Stats'
 import { Team } from './components/Team'
+import { Types } from './components/Types'
 import { useQR } from './hooks/useQR'
 import { getDefaultURL, getPageURL } from './lib/qr'
 
-const marqueeItems = [
-  'Proyecto de grado',
-  'Acceso por QR',
-  'Código abierto',
-  'Sin instalaciones',
-  'Hosting gratuito',
-]
-
-function Marquee() {
-  const items = [...marqueeItems, ...marqueeItems]
-
+/** Separador entre la propuesta y el material de consulta. */
+function GuideIntro() {
   return (
-    <div
-      aria-hidden="true"
-      className="relative flex overflow-hidden border-y border-white/8 bg-surface/60 py-3"
-    >
-      <div className="animate-marquee flex shrink-0 items-center gap-10 pr-10">
-        {items.map((item, index) => (
-          <span key={`${item}-${index}`} className="mono-label flex items-center gap-10 text-white/50">
-            {item}
-            <span className="size-1 rounded-full bg-accent/60" />
-          </span>
-        ))}
+    <section aria-labelledby="guia" className="border-y border-white/8 bg-surface/30 py-14 sm:py-16">
+      <div className="mx-auto max-w-4xl px-6 text-center">
+        <p className="mono-label text-violet">Material de consulta</p>
+        <h2 id="guia" className="mt-4 font-display text-2xl font-semibold text-white sm:text-3xl">
+          La guía que sostiene la experiencia
+        </h2>
+        <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+          Lo que sigue es el contenido que se trabaja en las estaciones, ampliado y con fuentes.
+          Sirve para preparar la clase, para consultar después del juego y para compartir con
+          familias y docentes.
+        </p>
       </div>
-      <div className="animate-marquee flex shrink-0 items-center gap-10 pr-10">
-        {items.map((item, index) => (
-          <span key={`${item}-b-${index}`} className="mono-label flex items-center gap-10 text-white/50">
-            {item}
-            <span className="size-1 rounded-full bg-accent/60" />
-          </span>
-        ))}
-      </div>
-    </div>
+    </section>
   )
 }
 
@@ -62,7 +57,7 @@ export default function App() {
     <>
       <a
         href="#contenido"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-violet focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
       >
         Saltar al contenido
       </a>
@@ -71,9 +66,21 @@ export default function App() {
 
       <main id="contenido">
         <Hero data={data} url={url} error={error} />
-        <Marquee />
-        <Features />
-        <QRGuide
+        <Stats />
+        <Ficha />
+        <Recorrido />
+        <Game />
+        <Fundamentacion />
+        <GuideIntro />
+        <Definition />
+        <Types />
+        <Scenarios />
+        <Signs />
+        <Actions />
+        <Resources />
+        <Laws />
+        <Myths />
+        <QRShare
           data={data}
           url={url}
           error={error}

@@ -5,14 +5,17 @@ type RevealProps = {
   children: ReactNode
   delay?: number
   className?: string
+  /** Etiqueta a renderizar. Usar `li` para no romper la semántica de listas. */
+  as?: 'div' | 'li'
 }
 
 /** Aparece con un desplazamiento suave al entrar en pantalla. */
-export function Reveal({ children, delay = 0, className }: RevealProps) {
+export function Reveal({ children, delay = 0, className, as = 'div' }: RevealProps) {
   const reduce = useReducedMotion()
+  const MotionTag = as === 'li' ? motion.li : motion.div
 
   return (
-    <motion.div
+    <MotionTag
       className={className}
       initial={reduce ? false : { opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -20,7 +23,7 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
       transition={{ duration: 0.65, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   )
 }
 
@@ -39,7 +42,7 @@ export function SectionTitle({
 }: SectionTitleProps) {
   return (
     <Reveal className={align === 'center' ? 'text-center' : ''}>
-      <p className="mono-label text-accent">{kicker}</p>
+      <p className="mono-label text-violet">{kicker}</p>
       <h2 className="mt-4 text-3xl font-semibold leading-[1.08] text-white sm:text-4xl md:text-5xl">
         {title}
       </h2>

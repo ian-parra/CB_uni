@@ -20,8 +20,8 @@ export function QRCard({ data, url, error }: QRCardProps) {
     const rect = event.currentTarget.getBoundingClientRect()
     const x = (event.clientX - rect.left) / rect.width - 0.5
     const y = (event.clientY - rect.top) / rect.height - 0.5
-    rotateY.set(x * 9)
-    rotateX.set(-y * 9)
+    rotateY.set(x * 8)
+    rotateX.set(-y * 8)
   }
 
   function handlePointerLeave() {
@@ -33,24 +33,23 @@ export function QRCard({ data, url, error }: QRCardProps) {
     <div className="relative mx-auto w-full max-w-sm">
       <div
         aria-hidden="true"
-        className="absolute -inset-10 -z-10 rounded-full bg-accent/12 blur-3xl"
+        className="animate-pulse-soft absolute -inset-12 -z-10 rounded-full bg-violet/15 blur-3xl"
       />
 
       <motion.div
         onPointerMove={handlePointerMove}
         onPointerLeave={handlePointerLeave}
         style={{ rotateX, rotateY, transformPerspective: 1000 }}
-        className="glass relative rounded-[28px] p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]"
+        className="glass relative rounded-[26px] p-5 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)]"
       >
         <div className="mb-4 flex items-center justify-between">
           <span className="mono-label flex items-center gap-2 text-white/70">
             <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60" />
-              <span className="relative inline-flex size-2 rounded-full bg-accent" />
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-violet opacity-60" />
+              <span className="relative inline-flex size-2 rounded-full bg-violet" />
             </span>
-            Acceso directo
+            Abrí esta guía en tu celular
           </span>
-          <span className="mono-label text-white/55">QR</span>
         </div>
 
         <div className="relative overflow-hidden rounded-2xl bg-white p-4">
@@ -66,7 +65,7 @@ export function QRCard({ data, url, error }: QRCardProps) {
             <div className="flex aspect-square w-full items-center justify-center">
               {error ? (
                 <p className="px-6 text-center text-sm text-neutral-600">
-                  No se pudo generar el QR. Revisa la URL.
+                  No se pudo generar el QR. Revisá la URL.
                 </p>
               ) : (
                 <Loader2
@@ -79,16 +78,16 @@ export function QRCard({ data, url, error }: QRCardProps) {
         </div>
 
         <p className="mt-4 text-center text-sm text-white/70">
-          Apunta la cámara del móvil al código
+          Apuntá la cámara del celular al código
         </p>
         <p className="mt-1 truncate text-center font-mono text-xs text-white/55">{url}</p>
 
         <div className="mt-5 grid grid-cols-2 gap-2">
           <button
             type="button"
-            onClick={() => data && download(data.png, 'qr-proyecto.png')}
+            onClick={() => data && download(data.png, 'qr-ciberbullying.png')}
             disabled={!data}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-3 py-2.5 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-accent-soft disabled:opacity-40"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet px-3 py-2.5 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-violet-soft disabled:opacity-40"
           >
             <Download aria-hidden="true" className="size-4" />
             PNG
@@ -98,10 +97,10 @@ export function QRCard({ data, url, error }: QRCardProps) {
             onClick={() => {
               if (!data) return
               const blob = new Blob([data.svg], { type: 'image/svg+xml' })
-              download(URL.createObjectURL(blob), 'qr-proyecto.svg')
+              download(URL.createObjectURL(blob), 'qr-ciberbullying.svg')
             }}
             disabled={!data}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-3 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:border-accent/60 hover:text-accent disabled:opacity-40"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-3 py-2.5 text-sm font-medium text-white transition-colors duration-200 hover:border-violet/60 hover:text-violet disabled:opacity-40"
           >
             <Download aria-hidden="true" className="size-4" />
             SVG

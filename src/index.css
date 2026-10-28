@@ -4,16 +4,20 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: #07080a;
-  --color-surface: #0c0e12;
-  --color-surface-2: #11141a;
-  --color-line: #1d222b;
-  --color-muted: #8b93a1;
-  --color-accent: #d7ff3e;
-  --color-accent-soft: #b6e02c;
+  --color-ink: #07080f;
+  --color-surface: #0e1119;
+  --color-surface-2: #141826;
+  --color-line: #1e2333;
+  --color-muted: #9aa3b8;
+  --color-violet: #a78bfa;
+  --color-violet-soft: #c4b5fd;
+  --color-coral: #fb7185;
+  --color-coral-soft: #fda4af;
+  --color-mint: #5eead4;
 
-  --animate-aurora: aurora 22s ease-in-out infinite alternate;
-  --animate-marquee: marquee 34s linear infinite;
+  --animate-aurora: aurora 24s ease-in-out infinite alternate;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pulse-soft: pulse-soft 3.2s ease-in-out infinite;
 
   @keyframes aurora {
     0% {
@@ -35,6 +39,18 @@
       transform: translate3d(-50%, 0, 0);
     }
   }
+
+  @keyframes pulse-soft {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.06);
+    }
+  }
 }
 
 @layer base {
@@ -42,11 +58,12 @@
     color-scheme: dark;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
   }
 
   body {
     background-color: var(--color-ink);
-    color: #eef1f6;
+    color: #edf0f7;
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -66,18 +83,17 @@
   }
 
   ::selection {
-    background: var(--color-accent);
+    background: var(--color-violet);
     color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--color-violet);
     outline-offset: 3px;
   }
 
-  /* Anclas del menú: que la barra fija no tape los títulos. */
   [id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 5.5rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -95,27 +111,20 @@
   }
 }
 
-@utility text-balance-safe {
-  text-wrap: balance;
-}
-
-/* Fondo con cuadrícula sutil (se desvanece hacia los bordes). */
+/* Fondo con cuadrícula sutil que se desvanece hacia los bordes. */
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
   background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
 }
 
 /* Tarjeta de vidrio reutilizable. */
 @utility glass {
-  background: linear-gradient(
-    160deg,
-    rgb(255 255 255 / 0.055),
-    rgb(255 255 255 / 0.015)
-  );
-  border: 1px solid rgb(255 255 255 / 0.08);
+  background: linear-gradient(160deg, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.015));
+  border: 1px solid rgb(255 255 255 / 0.09);
   backdrop-filter: blur(12px);
 }
 
@@ -124,4 +133,11 @@
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+/* Tarjeta base de sección. */
+@utility card {
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background-color: var(--color-surface);
 }
