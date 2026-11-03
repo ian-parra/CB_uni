@@ -1,5 +1,6 @@
 import { Hero } from '../components/Hero'
 import { Stats } from '../components/Stats'
+import { ComoFunciona } from '../components/ComoFunciona'
 import { Game } from '../components/Game'
 import { Preguntas } from '../components/Preguntas'
 import { GuideIntro } from '../components/GuideIntro'
@@ -18,6 +19,7 @@ export function HomePage() {
     <>
       <Hero />
       <Stats />
+      <ComoFunciona />
       <Game />
       <Preguntas />
       <GuideIntro />

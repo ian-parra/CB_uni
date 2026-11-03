@@ -30,8 +30,22 @@ export function Recorrido() {
                     className="font-medium text-violet underline underline-offset-4 hover:text-violet-soft"
                   >
                     Por qué esta propuesta
+                  </a>{' '}
+                  y la correspondencia con cada estación, en{' '}
+                  <a
+                    href="#diseno-estaciones"
+                    className="font-medium text-violet underline underline-offset-4 hover:text-violet-soft"
+                  >
+                    materiales y estaciones
                   </a>
-                  ; la versión completa se entrega por campus.
+                  . Las referencias completas están en{' '}
+                  <a
+                    href="#referencias"
+                    className="font-medium text-violet underline underline-offset-4 hover:text-violet-soft"
+                  >
+                    referencias bibliográficas
+                  </a>
+                  .
                 </p>
               </div>
             </Reveal>

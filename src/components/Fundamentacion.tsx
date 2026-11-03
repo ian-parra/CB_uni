@@ -1,5 +1,5 @@
-import { BookOpen } from 'lucide-react'
-import { principles } from '../content'
+import { BookOpen, LibraryBig } from 'lucide-react'
+import { principles, references } from '../content'
 import { Reveal, SectionTitle } from './Reveal'
 
 export function Fundamentacion() {
@@ -15,7 +15,7 @@ export function Fundamentacion() {
               el premio. Es el soporte.
             </>
           }
-          description="Tres ideas ordenan el diseño: la inclusión genuina de la tecnología, la diversidad de estrategias y la enseñanza de habilidades para habitar plataformas. La fundamentación completa se entrega por campus."
+          description="Tres ideas de la bibliografía de la cátedra ordenan el diseño: la inclusión genuina de la tecnología, el repertorio de estrategias y la enseñanza de habilidades para habitar plataformas. No son un marco decorativo: cada una se traduce en una decisión concreta sobre las estaciones."
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">
@@ -47,6 +47,33 @@ export function Fundamentacion() {
             </div>
           </div>
         </Reveal>
+
+        <div id="referencias" className="mt-16 scroll-mt-24 sm:mt-24">
+          <Reveal>
+            <h3 className="mono-label flex items-center gap-2 text-violet">
+              <LibraryBig aria-hidden="true" className="size-3.5" />
+              Referencias bibliográficas
+            </h3>
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
+              Materiales de la cátedra que sostienen las decisiones didácticas. Los datos
+              editoriales completos se consignan en la versión escrita del trabajo.
+            </p>
+          </Reveal>
+
+          <ul className="mt-6 space-y-3">
+            {references.map((reference, index) => (
+              <Reveal as="li" key={reference.author} delay={index * 0.06}>
+                <article className="rounded-2xl border border-white/8 bg-surface p-5 sm:p-6">
+                  <p className="font-display text-base font-semibold text-white">
+                    {reference.author} <span className="text-white/60">({reference.year})</span>
+                  </p>
+                  <p className="mt-1 text-xs text-violet-soft">{reference.work}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{reference.contribution}</p>
+                </article>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   )

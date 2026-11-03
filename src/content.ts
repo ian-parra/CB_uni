@@ -87,7 +87,7 @@ export const site = {
   },
   subtitle: 'Una búsqueda del tesoro para desarmar el ciberbullying.',
   description:
-    'Cinco estaciones con códigos QR, un caso que se arma entre todos y un pacto de convivencia digital. Una experiencia de enseñanza lúdica para el secundario, con una guía abierta para seguir aprendiendo.',
+    'Una búsqueda del tesoro en cinco estaciones con QR. Cada dilema entrega una palabra; las cinco, en orden, forman la frase que abre el sobre con el pacto de convivencia digital del curso.',
   university: 'Universidad Nacional de Hurlingham',
   space: 'Feria de Enseñanza Lúdica',
   course: 'Diseño de la enseñanza',
@@ -317,6 +317,203 @@ export const stations: Station[] = [
 ]
 
 export const finalCode = 'cortar la cadena es cuidar'
+
+export type HuntStep = {
+  step: string
+  title: string
+  description: string
+}
+
+/**
+ * Explicación de la lógica de la búsqueda del tesoro.
+ * Va al inicio del juego, porque es lo que hay que poder contar en el stand.
+ */
+export const hunt = {
+  kicker: 'Cómo funciona',
+  title: {
+    before: 'La búsqueda no esconde un objeto.',
+    accent: 'Esconde una frase.',
+  },
+  intro:
+    'Cortá el círculo es una búsqueda del tesoro con una vuelta: el tesoro no es un premio material, es una frase. El curso recorre cinco estaciones con códigos QR, resuelve un dilema en cada una y, con las cinco palabras que va ganando, arma la frase que abre el sobre final. Adentro está el pacto de convivencia digital que el grupo escribe y se lleva.',
+  objective: {
+    label: 'Objetivo del juego',
+    text: 'Reconstruir, entre todo el curso, la cadena de un caso de ciberbullying y convertir lo aprendido en un pacto de convivencia digital que el grupo pueda sostener. No buscamos que adivinen una definición: buscamos que puedan explicar por qué una situación es violencia y qué puede hacer cada rol para cortarla.',
+  },
+  steps: [
+    {
+      step: '01',
+      title: 'Se abre un caso',
+      description:
+        'El curso encuentra un mensaje proyectado: “Miren lo que hizo”. No se empieza por la definición de ciberbullying, se empieza por la situación que hay que mirar.',
+    },
+    {
+      step: '02',
+      title: 'Cinco estaciones, cinco dilemas',
+      description:
+        'Cada estación tiene su QR y una decisión para tomar en grupo: distinguir si es o no es, ubicar roles, leer un dato, ordenar acciones y acordar. Ninguna opción es obvia: hay que justificar.',
+    },
+    {
+      step: '03',
+      title: 'Cada decisión entrega una palabra',
+      description:
+        'La opción que cuida a la persona desbloquea una palabra. Las palabras no están escritas en ningún lado: se ganan decidiendo. Por eso no se pueden copiar de un grupo a otro sin haber hecho el recorrido.',
+    },
+    {
+      step: '04',
+      title: 'Las palabras arman el código',
+      description:
+        'Las cinco palabras, en orden, forman la frase CORTAR LA CADENA ES CUIDAR. Esa frase es el código que abre el sobre. No es una contraseña para “ganar”: es la síntesis de lo que el grupo tuvo que entender.',
+    },
+  ],
+  code: {
+    title: 'Qué es el código que abre el sobre',
+    paragraphs: [
+      'El código es una frase, no un número ni una clave secreta. Se escribe con las cinco palabras que entrega el recorrido y funciona como cierre: si el grupo no puede explicar por qué esas palabras van en ese orden, todavía no terminó de jugar.',
+      'El sobre no tiene un premio: tiene el pacto. Tres acuerdos concretos que el curso redacta, discute y firma en un afiche. El juego termina cuando el pacto queda escrito y alguien puede sostenerlo, no cuando aparece la frase en la pantalla.',
+    ],
+    note: 'Por eso el código se arma con palabras y no con puntos: obliga a poder explicar la frase, no solo a repetirla.',
+  },
+}
+
+export type Reference = {
+  author: string
+  year: string
+  work: string
+  contribution: string
+}
+
+/** Bibliografía de la cátedra que sostiene las decisiones didácticas. */
+export const references: Reference[] = [
+  {
+    author: 'Maggio, Mariana',
+    year: '2023',
+    work: 'Material de la cátedra Diseño de la enseñanza · UNAHUR',
+    contribution:
+      'Inclusión genuina: la tecnología no se incorpora para motivar ni para decorar, sino porque agrega algo que sin ella no sería posible. Sostiene el uso del QR como soporte que distribuye las pistas y hace circular el caso entre grupos.',
+  },
+  {
+    author: 'Libedinsky, Marta',
+    year: '2020',
+    work: 'Material de la cátedra Diseño de la enseñanza · UNAHUR',
+    contribution:
+      'Repertorio de estrategias: la secuencia combina estudio de casos, debate, lectura de datos y producción escrita. La variedad no es azar: cada momento pide una tarea cognitiva distinta y un producto observable.',
+  },
+  {
+    author: 'Lion, Carina',
+    year: '2020',
+    work: 'Material de la cátedra Diseño de la enseñanza · UNAHUR',
+    contribution:
+      'Enseñar en contextos algorítmicos: no alcanza con decir “no compartas”. El desafío es entender por qué circula el contenido, qué decide cada rol y cómo se construyen habilidades para habitar las plataformas de forma crítica.',
+  },
+]
+
+/**
+ * Declaración de uso de IA. La consigna pide citarla e incluir las
+ * instrucciones como parte de las fuentes.
+ */
+export const aiUse = {
+  kicker: 'Transparencia',
+  title: 'Uso de inteligencia artificial',
+  intro:
+    'Este proyecto se desarrolló con asistencia de inteligencia artificial generativa. Lo declaramos de forma explícita: el contenido disciplinar, la secuencia didáctica, la bibliografía y las decisiones pedagógicas son del equipo. La IA se usó como herramienta de trabajo, no como autora.',
+  sections: [
+    {
+      title: 'Qué se delegó y qué no',
+      body: [
+        'Se usó IA para la implementación técnica del sitio —estructura de componentes, estilos, accesibilidad, diseño responsive y configuración de publicación— y para revisar la redacción de algunos textos.',
+        'No se delegaron el recorte de contenidos, la selección de fuentes, el diseño de las estaciones ni los criterios de evaluación. Cada texto fue leído, corregido y aprobado por las integrantes del equipo.',
+      ],
+    },
+    {
+      title: 'Cómo se trabajó: agentes y skills, no prompts aislados',
+      body: [
+        'El trabajo no consistió en pedirle textos a un chatbot. Se usó un agente de programación (OpenCode) que opera sobre el repositorio: lee archivos, ejecuta comandos, levanta el sitio, revisa el resultado en un navegador y corrige. Sobre ese agente se activaron habilidades (skills) y subagentes para tareas concretas, como revisar accesibilidad, ordenar el diseño responsive o verificar el comportamiento en pantallas chicas.',
+        'Por eso el registro que sigue no es una lista de “prompts” en el sentido clásico, sino un registro de instrucciones de trabajo: qué se le pidió al agente, con qué alcance y qué se verificó después.',
+      ],
+    },
+  ],
+  logTitle: 'Registro de instrucciones al agente',
+  log: [
+    {
+      request: 'Rediseñar el sitio con una estética moderna y corregir el responsive en celular.',
+      scope: 'Diseño y CSS',
+    },
+    {
+      request: 'Separar la propuesta docente en una subpágina y mantener el juego en la home.',
+      scope: 'Arquitectura de la información',
+    },
+    {
+      request: 'Implementar el juego de cinco estaciones con QR, palabras clave y código final.',
+      scope: 'Funcionalidad',
+    },
+    {
+      request: 'Revisar accesibilidad: contraste, foco visible, navegación por teclado y textos alternativos.',
+      scope: 'Accesibilidad',
+    },
+    {
+      request: 'Verificar que no haya desbordes horizontales ni errores de consola en 480 px.',
+      scope: 'Verificación',
+    },
+    {
+      request: 'Configurar la publicación en Cloudflare y el respaldo de rutas para una SPA.',
+      scope: 'Despliegue',
+    },
+  ],
+  note:
+    'Este registro se incluye como fuente, tal como pide la consigna. La versión completa de las conversaciones queda a disposición de la cátedra.',
+}
+
+/**
+ * Diálogo entre las decisiones didácticas y cada estación.
+ * Es lo que la profesora pide poder mostrar: qué material sostiene cada momento.
+ */
+export type StationDesign = {
+  station: string
+  decision: string
+  concept: string
+  source: string
+}
+
+export const stationDesign: StationDesign[] = [
+  {
+    station: '1 · ¿Es o no es?',
+    decision:
+      'Comparar situaciones antes de definir el concepto y decidir cuál es ciberbullying, con criterios explícitos.',
+    concept: 'Repertorio de estrategias: se entra por el caso, no por la definición',
+    source: 'Libedinsky (2020)',
+  },
+  {
+    station: '2 · Los roles de la escena',
+    decision:
+      'Ubicar responsabilidades en un caso con cinco personajes y tomar posición en grupo sin simplificar.',
+    concept: 'Repertorio de estrategias: debate con toma de posición',
+    source: 'Libedinsky (2020)',
+  },
+  {
+    station: '3 · El costo real',
+    decision:
+      'Leer datos y gráficos de UNICEF, OMS y UNESCO y responder qué cambia cuando el acoso no tiene horario de salida.',
+    concept:
+      'Inclusión genuina: el dato y su lectura solo son posibles con el soporte digital',
+    source: 'Maggio (2023)',
+  },
+  {
+    station: '4 · Qué hacer, en qué orden',
+    decision:
+      'Ordenar seis acciones según el rol y justificar la secuencia elegida frente al grupo.',
+    concept:
+      'Enseñar en contextos algorítmicos: decidir dentro de la plataforma, no solo opinar sobre ella',
+    source: 'Lion (2020)',
+  },
+  {
+    station: '5 · El pacto',
+    decision:
+      'Escribir tres acuerdos que el curso pueda cumplir y unificarlos en un afiche con destinatario real.',
+    concept: 'Repertorio de estrategias: producción escrita colaborativa',
+    source: 'Libedinsky (2020)',
+  },
+]
 
 export type Principle = {
   author: string

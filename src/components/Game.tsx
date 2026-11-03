@@ -111,7 +111,7 @@ export function Game() {
                   Una cadena que se corta.
                 </>
               }
-              description="En la feria, cada estación se abre con su propio QR. Acá podés recorrerlas en orden: al resolver cada desafío se desbloquea una palabra y, al final, el código que abre el sobre."
+              description="En la feria, cada estación se abre con su propio QR. Acá podés recorrerlas en orden: cada decisión desbloquea una palabra y las cinco juntas forman el código del sobre. Si querés la lógica completa para contar en el stand, está en Cómo funciona."
             />
 
             <Reveal delay={0.1} className="mt-6 sm:mt-8">
